@@ -1,0 +1,49 @@
+/* .App {
+  text-align: center;
+} */
+
+body{
+  margin: 24px;
+}
+.movie-poster{
+  height: 500px;
+  width: 340px;
+  object-fit:cover;
+  
+}
+.movie-specs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.movie-name{
+  font-size: 24px;
+  margin-top: 7px;
+  margin-bottom: 8px;
+  font-weight: 600; 
+}
+.movie-container{
+  width: 340px;
+  
+  font-family: 'poppins',sans-serif;
+}
+.movie-rating{
+  font-size: 18px;
+  font-weight: 400;
+}
+.movie-summary{
+  color: #222222;
+}
+.movie-list{
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.counter-container{
+  display: flex;
+  gap: 10px;
+}
+.likes-dislikes{
+  font-size: 20px;
+}
