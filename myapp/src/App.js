@@ -1,20 +1,15 @@
 import logo from './logo.svg';
-import { useState } from 'react';
 import './App.css';
+import { Movie } from './Movie';
+import { useState } from 'react';
+
 
 function App() {
-  // const names = [
-  //   {name:"V.Pirai",
-  //    pic:"https://mymodernmet.com/wp/wp-content/uploads/2019/12/sinhue-boksberger-forest-photo.jpg",
-  //   },
-  //   {name:"V.Gokul",
-  //    pic:"https://www.bhagwankiphotos.com/wp-content/uploads/2018/12/Mahakal-Ka-Trishul-Photo.jpg",
-  //   },
-  //  ];
+
 
    const movie = [{
      moviename:"Avenger : Endgame",
-     pic:"https://www.wallpapertip.com/wmimgs/26-261926_avengers-endgame.png",
+     pic:"https://wallpaperaccess.com/full/1079145.jpg",
      rating:"★ 8.4",
      para:"Nick Fury is compelled to launch the Avengers Initiative when Loki poses a threat to planet Earth. His squad of superheroes put their minds together to accomplish the task.",
    },
@@ -38,7 +33,7 @@ function App() {
   },
   {
     moviename:"Arjun Reddy",
-    pic:"https://www.wallpapertip.com/wmimgs/31-318138_vijay-devarakonda-arjun-reddy-movie-first-look-ultra.jpg",
+    pic:"https://flxt.tmsimg.com/assets/p14472997_p_v10_aa.jpg",
     rating:"★ 8.1",
     para:"Arjun Reddy Deshmukh is a young surgeon with functioning alcoholism and a furious temper. He spirals into self-destruction when he learns that his girlfriend is marrying another man.",
   },
@@ -52,26 +47,6 @@ function App() {
 
  return (
    <div className="App">
-     {/* <Msg name="V.Piraisoodan"
-          pic="https://mymodernmet.com/wp/wp-content/uploads/2019/12/sinhue-boksberger-forest-photo.jpg"/>
-
-     <Msg name="V.Gokul"
-          pic="https://www.bhagwankiphotos.com/wp-content/uploads/2018/12/Mahakal-Ka-Trishul-Photo.jpg"/> */}
-     
-
-     {/*normal output */}
-     {/* {names.map((nm)=> <Names name={nm.name} pic={nm.pic}  /> )  } */}
-
-     {/* same output in loop */}
-    {/* {names.map((user)=>(
-      <Names name={user.name} pic={user.pic} /> 
-    ))} */}
-
-    {/* destructuring method */}
-    {/* {names.map(({name,pic})=>(
-      <Names name={name} pic={pic} />
-    ))} */}
-
 
     {/* movie list */}
     {/* <Movie /> */}
@@ -81,8 +56,10 @@ function App() {
       <Movie moviename={moviename} pic={pic} rating={rating} para={para} />
     ))}
     </section>
-
+     
     {/* <Counter/> */}
+    {/* <ColourBox/> */}
+    <Addcolour/>
 
    </div>
  );
@@ -90,63 +67,43 @@ function App() {
 
 export default App;
 
-
-// function Movie(){
-//   return <div className="movie-container">
-//     <img className="movie-poster"
-//      src="https://www.wallpapertip.com/wmimgs/26-261926_avengers-endgame.png"
-//      alt="" />
-//      <div className="movie-specs">
-//      <h3 className="movie-name">Avenger : Endgame</h3>
-//      <p className="movie-rating"> ★ 8.4</p> 
-//      </div>
-//      <p className="movie-summary">Nick Fury is compelled to launch the Avengers Initiative
-//         when Loki poses a threat to planet Earth. His squad of 
-//         superheroes put their minds together to accomplish the task.
-//       </p>
+// EASY METHOD TO CHANGE BACKGROUND
+// function ColourBox(){
+//   const styles = {background : "red"};
+//   return <div>
+//     <input style={styles} onChange={(event)=>console.log(event.target.value)} placeholder="Enter a colour"/>
 //   </div>
 // }
 
-function Counter(){
-  const [like , setlike] = useState(0);
-  const [dislike , setdislike] = useState(0);
-  return(
-    <div className="counter-container">
-      <button className="likes-dislikes" onClick={()=> setlike(like+1)}>👍🏼 {like}</button>
-      <button className="likes-dislikes" onClick={()=> setdislike(dislike+1)}>👎 {dislike}</button>
-    </div>
-  );
+
+function Addcolour(){
+  const [color , setColor] = useState("");
+  const styles = {backgroundColor : color};
+  // const colors = ["red","pink","violet"];
+  const [colors , setColors] = useState(["red","pink","violet"]);
+  //  Type the input -> onChange -> event.target.value -> Setcolor
+  //   
+  return <div>
+    <input style={styles} 
+    onChange={(event)=> setColor(event.target.value)} placeholder="Enter the colour"/>
+    {/* we want to print color value,so color ingu mention pannanum. */}
+    <button onClick={()=>setColors([...colors, color])}>Add color</button>
+    {colors.map((clr)=> (<Addcolorbox clr={clr}/>)) }
+
+    {/* <p>hi</p> */}
+  </div>
 }
 
+// console.log(event.target.value)
 
-function Movie({pic,moviename,rating,para}){
+function Addcolorbox({clr}){
+  const styles = {
+    backgroundColor : clr,
+    height : "50px",
+    width : "200px",
+    margin : "10px 0px",
+  }
   return (
-  <div className="movie-container">
-     <img className="movie-poster"
-      src={pic}
-      alt={moviename}
-     />
-     <div className="movie-specs">
-      <h3 className="movie-name">{moviename}</h3>
-      <p className="movie-rating"> {rating}</p> 
-     </div>
-     <p className="movie-summary">{para}</p>
-
-     {/* Nested component - one component is using with inside the another component*/}
-     <Counter/>
-  </div>
-)}
-
-
-// function Names({name,pic}){
-//   // console.log(props);
-//   return(
-//     <div>
-//      <img height="200" 
-//       src={pic}
-//       alt={name}/> 
-//     <h1 className="name"> Hi,{name}
-//     </h1>
-//     </div>
-//   );
-// }
+  <div style ={styles}></div>
+  )
+}
