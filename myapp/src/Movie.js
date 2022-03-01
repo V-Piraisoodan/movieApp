@@ -16,7 +16,7 @@ export function Movie({ pic, moviename, rating, para }) {
         alt={moviename} />
       <div className="movie-specs">
         <h3 className="movie-name">{moviename}</h3>
-        <p className="movie-rating"> {rating}</p>
+        <p className="movie-rating">⭐{rating}</p>
       </div>
 
       {/* hide the movie paragraph */}
