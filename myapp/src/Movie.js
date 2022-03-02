@@ -1,5 +1,6 @@
 import { Counter } from './Counter.js';
 import { useState } from 'react';
+import Button from '@mui/material/Button';
 
 export function Movie({ pic, moviename, rating, para }) {
 
@@ -20,7 +21,8 @@ export function Movie({ pic, moviename, rating, para }) {
       </div>
 
       {/* hide the movie paragraph */}
-      <button onClick={()=>setShow(!show)} style={{marginBottom:"10px"}} > {show ? "Hide" : "Show"} description</button>
+      {/* <button onClick={()=>setShow(!show)} style={{marginBottom:"10px"}} > {show ? "Hide" : "Show"} description</button> */}
+      <Button variant="outlined" onClick={()=>setShow(!show)} style={{marginBottom:"10px"}} >{show ? "Hide" : "Show"} description</Button>
        
        {/* conditional styling */}
       {/* <p style={styles} className="movie-summary">{para}</p> */}
