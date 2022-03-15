@@ -2,10 +2,11 @@ import './App.css';
 import {Movielist} from './Movielist.js'
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import {Switch,Link,Route} from 'react-router-dom';
+import {Switch,Link,Route,Redirect,useParams} from 'react-router-dom';
 import { Addcolour } from './Addcolour';
 import { initial_movielist } from './initial_movielist';
 import TextField from '@mui/material/TextField';
+// import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
 
@@ -47,6 +48,22 @@ function App() {
       
 
       <Switch>
+        {/* home path */}
+        <Route exact path='/'>
+          <p>Welcome to the Movie App!!!!!</p>
+        </Route>
+
+        {/* film new path,it is redirected to the "/movies" path */}
+        <Route path='/films'>
+          <Redirect to="/movies"/>
+        </Route> 
+
+        {/* dynamic route */}
+        <Route path='/movies/:id'>
+          <MoviesDetails movies={movie}/>
+        </Route> 
+
+        {/*movies path  */}
         <Route path='/movies'>
           <div className='input_fields'> 
             <TextField id="outlined-basic" color="primary" size='small' label="Enter a movie name" variant="outlined" value={moviename} onChange={(event)=>setMoviename(event.target.value)} placeholder="Enter a movie name" />
@@ -67,14 +84,15 @@ function App() {
 
         </Route>
 
+        {/* color game path */}
         <Route path='/color-game'>
           <Addcolour />
         </Route>
-
-        <Route path='/'>
-          <p>Welcome to the Movie App!!!!!</p>
-        </Route>
-         
+        
+        {/* 404 page path */}
+        <Route path="**">
+          <NotFound/>
+        </Route> 
       </Switch>
 
       {/* <Counter/> */}
@@ -87,4 +105,43 @@ function App() {
 
 export default App;
 
+//  const styles = {width :"100%",height : "500px",objectFit:"contain"}
+function NotFound(){
+  const styles = {width :"100%",height : "500px",objectFit:"contain"}
+ return (
+   <img
+   style={styles}
+   src='https://i.pinimg.com/originals/a8/12/1a/a8121abee959e18cbad25ad4046f76d8.gif'
+   alt='Not Found'
+   />
+ )
+ }
 
+function MoviesDetails({movies}){
+  const {id} = useParams();
+  const movie = movies[id];
+  // console.log(movie)
+  return (
+  <div>
+    <iframe width="70%" 
+      height="620" 
+      src={movie.trailer}
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    <div className='container'>
+      <h1>Movie Details {id} </h1>
+
+      <div className='movie-specs'> 
+       <h3 className="movie-name">{movie.moviename}</h3>
+       <p className="movie-rating">⭐{movie.rating}</p>
+      </div>
+      <p className="movie-summary">{movie.para}</p>
+
+    </div>
+  </div>
+  );
+}
+ 
