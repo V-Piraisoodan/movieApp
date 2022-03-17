@@ -1,4 +1,4 @@
-import { Counter } from './Counter.js';
+import { Counter } from '../Counter.js';
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
