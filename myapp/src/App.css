@@ -90,6 +90,39 @@ body{
 .button_{
   width: 150px;
 }
+.trailer-container{
+  display: flex;
+  margin-left: 5px;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  padding: 0px 8px 0px 8px;
+}
+.movie-specs1{
+  display: flex;
+  gap: 30px;
+}
+.movie-rating1{
+  padding-top: 9px;
+  font-size: 25px;
+  margin: 0px;
+}
+.movie-name1{
+  margin: 0px;
+  font-size: 35px;
+}
+.movie-summary1{
+  font-size: 19px;
+}
+.back-btn{
+  display: flex;
+  justify-content: center;
+  height: 45px;
+}
+.back-btn1{
+  width: 80%;
+}
 @media (min-width: 992px) {
   .movie-container:hover {
     margin-top: -1px;
