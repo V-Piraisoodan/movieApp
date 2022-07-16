@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import InfoIcon from '@mui/icons-material/Info';
 import {useHistory} from 'react-router-dom';
 
-export function Movie({ pic, moviename, rating, para ,index}) {
+export function Movie({ pic, moviename, rating, para ,index,deleteButton,editButton}) {
 
   // hide para
   const [show , setShow] = useState(true);
@@ -57,7 +57,11 @@ return (
        {show ? <p className="movie-summary">{para}</p> : ""}
 
       {/* Nested component - one component is using with inside the another component*/}
-      <Counter />
+      <cardAction className="cardAction">
+        <Counter />
+        {deleteButton}
+        {editButton}
+      </cardAction>
     {/* </CardContent> */}
     {/* </div> */}
   </Card>
