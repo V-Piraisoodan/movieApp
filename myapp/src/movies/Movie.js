@@ -59,8 +59,8 @@ return (
       {/* Nested component - one component is using with inside the another component*/}
       <cardAction className="cardAction">
         <Counter />
-        {deleteButton}
         {editButton}
+        {deleteButton}
       </cardAction>
     {/* </CardContent> */}
     {/* </div> */}
