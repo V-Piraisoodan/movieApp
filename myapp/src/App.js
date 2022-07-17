@@ -6,7 +6,7 @@ import { Addcolour } from './color/Addcolour';
 import { initial_movielist } from './movies/initial_movielist';
 import { NotFound } from './NotFound';
 import { MoviesDetails } from './movies/MoviesDetails';
-import { AddMovie } from './AddMovie';
+import { AddMovie } from './movies/AddMovie';
 // import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
