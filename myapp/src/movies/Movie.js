@@ -28,13 +28,13 @@ return (
       <div className="movie-specs">
         <h3 className="movie-name">
           {moviename}
-          <IconButton onClick={()=>setShow(!show)} color="primary" style={{marginBottom:"10px"}}>
+          <IconButton onClick={()=>setShow(!show)} color="primary" style={{marginTop: "-5px"}}>
             {show ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
           </IconButton>
-          <IconButton  onClick={()=> history.push("/movies/" + index)} color="primary" style={{marginBottom:"10px"}}> {/*  interpolation method --> history.push(`/movies/$(index)`)  */}
+          <IconButton  onClick={()=> history.push("/movies/" + index)} color="primary" style={{marginTop:"-4px"}}> {/*  interpolation method --> history.push(`/movies/$(index)`)  */}
             <InfoIcon/>
           </IconButton>
-          </h3>
+        </h3>
         <p className="movie-rating">⭐{rating}</p>
       </div>
 
