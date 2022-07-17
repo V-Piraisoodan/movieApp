@@ -18,22 +18,22 @@ export function Movielist({ movie , setmovie}) {
           trailer={trailer} 
           index={index}
           deleteButton = {
-          <IconButton onClick={()=>{
-            console.log(index)
-            //create a copy of movie list & remove the element from it -- filter
-            const removeMovieIndex = index;
+           <IconButton onClick={()=>{
+              console.log(index)
+              //create a copy of movie list & remove the element from it -- filter
+              const removeMovieIndex = index;
               const remainingMovies = movie.filter((mv ,idx)=>  //we pass the 2 arguments(mv & idx) value and index(removeMoviesIndex)   
                 idx !== removeMovieIndex
               );
               console.log(remainingMovies,movie,removeMovieIndex)
               setmovie(remainingMovies);
-            } }color="error" aria-label="delete" >
-          <DeleteIcon />
-          </IconButton>}
+              } }color="error" aria-label="delete" >
+             <DeleteIcon />
+            </IconButton>}
           editButton = {
-             <Fab size="small" color="secondary" aria-label="edit">
+            <Fab size="small" color="secondary" aria-label="edit">
              <EditIcon />
-             </Fab>
+            </Fab>
           }/>
       ))}
     </section>
