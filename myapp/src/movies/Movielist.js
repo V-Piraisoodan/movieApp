@@ -1,11 +1,12 @@
 import { Movie } from './Movie';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
+import { useHistory } from 'react-router-dom';
 
 // COUNTER IMPORT  111111111
 export function Movielist({ movie , setmovie}) {
+  const history = useHistory();
   return (
     <section className="movie-list">
       {movie.map(({ moviename, pic, rating, para, trailer },index) => (
@@ -31,9 +32,12 @@ export function Movielist({ movie , setmovie}) {
              <DeleteIcon />
             </IconButton>}
           editButton = {
-            <Fab size="small" color="secondary" aria-label="edit">
+            <IconButton onClick={()=> history.push("/movies/edit" + index)} 
+              size="small" 
+              color="secondary" 
+              aria-label="edit">
              <EditIcon />
-            </Fab>
+            </IconButton>
           }/>
       ))}
     </section>
