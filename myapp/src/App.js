@@ -7,6 +7,7 @@ import { initial_movielist } from './movies/initial_movielist';
 import { NotFound } from './NotFound';
 import { MoviesDetails } from './movies/MoviesDetails';
 import { AddMovie } from './movies/AddMovie';
+import { EditMovie } from './movies/EditMovie';
 // import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
@@ -43,6 +44,11 @@ function App() {
           <AddMovie movie={movie} setmovie={setmovie}/>
         </Route>
 
+        {/* edit movie */}
+        <Route path='/movies/edit/:id'>
+          <EditMovie movie={movie} setmovie={setmovie}/>
+        </Route>  
+
         {/* dynamic route */}
         <Route path='/movies/:id'>
           <MoviesDetails movies={movie}/>
@@ -50,10 +56,7 @@ function App() {
 
         {/*movies path  */}
         <Route path='/movies'>
-          
-
           <Movielist movie={movie} setmovie={setmovie}/>
-
         </Route>
 
         {/* color game path */}
