@@ -17,13 +17,13 @@ export function EditMovie({ movie, setmovie }) {
 
   const history = useHistory();
 
-  const resetMovieForm = () => {
-    setMoviename("");
-    setPic("");
-    setPara("");
-    setRating("");
-    setTrailer("");
-  };
+  // const resetMovieForm = () => {
+  //   setMoviename("");
+  //   setPic("");
+  //   setPara("");
+  //   setRating("");
+  //   setTrailer("");
+  // };
 
   const Edit_movie = () => {
     console.log({ moviename: moviename, pic: pic, para: para, rating: rating });
@@ -38,7 +38,7 @@ export function EditMovie({ movie, setmovie }) {
     const copyofMovies = [...movie];  //get copy of movie 
     copyofMovies[id] = UpdatedMovie;  //get which movie selected and update the data
     setmovie(copyofMovies);  // update the original data
-    resetMovieForm();
+    // resetMovieForm();
     history.push('/movies');
   };
   return (
