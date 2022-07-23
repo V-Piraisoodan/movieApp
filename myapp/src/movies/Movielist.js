@@ -32,7 +32,8 @@ export function Movielist({ movie , setmovie}) {
              <DeleteIcon />
             </IconButton>}
           editButton = {
-            <IconButton onClick={()=> history.push("/movies/edit/" + index)} 
+            <IconButton style={{marginLeft:"auto"}}
+              onClick={()=> history.push("/movies/edit/" + index)} 
               size="small" 
               color="secondary" 
               aria-label="edit">
