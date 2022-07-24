@@ -9,23 +9,53 @@ import { MoviesDetails } from './movies/MoviesDetails';
 import { AddMovie } from './movies/AddMovie';
 import { EditMovie } from './movies/EditMovie';
 // import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
+
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+
 
 function App() {
 
   const [movie,setmovie] = useState(initial_movielist)
-
-
+  const history = useHistory();
 
   return (
     <div className="App">
  
       
-        <ul className='navication'>
+        {/* <ul className='navication'>
          <li><Link to='/' className='navication_list'>Home</Link></li>
          <li><Link to='/movies' className='navication_list'>Movies</Link></li>
          <li><Link to='/movies/add' className='navication_list'>Add Movies</Link></li>
          <li><Link to='/color-game' className='navication_list'>Color-Game</Link></li>
-        </ul>
+        </ul> */}
+
+      <AppBar position="static">
+        <Toolbar>
+          <Button onClick={()=>history.push('/')}
+            size="large" color="inherit" aria-label="Home">
+            Home
+          </Button>
+
+          <Button onClick={()=>history.push('/movies')}
+            size="large" color="inherit" aria-label="Movies">
+            Movies
+          </Button>
+
+          <Button onClick={()=>history.push('/movies/add')}
+            size="large" color="inherit" aria-label="Add Movies">
+            Add Movies
+          </Button>
+
+          <Button onClick={()=>history.push('/color-game')}
+            size="large" color="inherit" aria-label="Color-Game">
+            Color-Game
+          </Button>
+        </Toolbar>
+      </AppBar>
       
 
       <Switch>
