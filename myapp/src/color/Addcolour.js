@@ -15,13 +15,15 @@ export function Addcolour() {
   const [colors, setColors] = useState(["red", "pink", "violet"]);
   //  Type the input -> onChange -> event.target.value -> Setcolor
   //   
-  return <div>
+  return (
+  <div>
     <input style={styles}
       onChange={(event) => setColor(event.target.value)} placeholder="Enter the colour" />
     {/* we want to print color value,so color ingu mention pannanum. */}
     <button onClick={() => setColors([...colors, color])}>Add color</button>
-    {colors.map((clr, index) => { <Addcolorbox key={index} clr={clr} />; })}
+    {colors.map((clr, index) =>  <Addcolorbox key={index} clr={clr} /> )}
 
     {/* <p>hi</p> */}
-  </div>;
+  </div>
+  )
 }
