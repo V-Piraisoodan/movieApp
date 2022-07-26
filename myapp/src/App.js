@@ -1,6 +1,6 @@
 import './App.css';
 import {Movielist} from './movies/Movielist.js'
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
 import {Switch,Link,Route,Redirect} from 'react-router-dom';
 import { Addcolour } from './color/Addcolour';
 import { initial_movielist } from './movies/initial_movielist';
@@ -24,16 +24,23 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function App() {
 
-  const [movie,setmovie] = useState(initial_movielist)
+  const [movie,setmovie] = useState([])
   const history = useHistory();
 
   const [mode,setmode] = useState("light")
   console.log(mode)
+
   const darkTheme = createTheme({   //STEP:1 dark theme CONTEXT Creating
     palette: {
       mode: mode,
     },
   });
+
+  useEffect(()=>{
+    fetch("https://62dd3993ccdf9f7ec2c27434.mockapi.io/movies") //to get the api
+    .then(data=>data.json())                                   // to convert the date into json format
+    .then(ans=> setmovie(ans))                              //get the output in console
+  }, []);
 
   const paperStyles = {
     borderRadius : "0px",
@@ -140,4 +147,3 @@ function App() {
 }
 
 export default App;
-
