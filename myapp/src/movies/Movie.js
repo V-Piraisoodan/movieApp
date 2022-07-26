@@ -8,6 +8,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import InfoIcon from '@mui/icons-material/Info';
 import {useHistory} from 'react-router-dom';
+import CardActions from '@mui/material/CardActions';
 
 export function Movie({ pic, moviename, rating, para ,index,deleteButton,editButton}) {
 
@@ -28,7 +29,7 @@ return (
       <div className="movie-specs">
         <h3 className="movie-name">
           {moviename}
-          <IconButton onClick={()=>setShow(!show)} color="primary" style={{marginTop: "-5px"}}>
+          <IconButton onClick={()=>setShow(!show)} color="primary" style={{marginTop: "-5px"}} >
             {show ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
           </IconButton>
           <IconButton  onClick={()=> history.push("/movies/" + index)} color="primary" style={{marginTop:"-4px"}}> {/*  interpolation method --> history.push(`/movies/$(index)`)  */}
@@ -57,11 +58,11 @@ return (
        {show ? <p className="movie-summary">{para}</p> : ""}
 
       {/* Nested component - one component is using with inside the another component*/}
-      <cardAction className="cardAction">
-        <Counter />
+      <CardActions className="cardAction">
+        <Counter/>
         {editButton}
         {deleteButton}
-      </cardAction>
+      </CardActions>
     {/* </CardContent> */}
     {/* </div> */}
   </Card>
