@@ -10,7 +10,14 @@ import InfoIcon from '@mui/icons-material/Info';
 import {useHistory} from 'react-router-dom';
 import CardActions from '@mui/material/CardActions';
 
-export function Movie({ pic, moviename, rating, para ,index,deleteButton,editButton}) {
+export function Movie({ 
+    pic, 
+    moviename, 
+    rating, 
+    para,
+    id,
+    deleteButton,
+    editButton}) {
 
   // hide para
   const [show , setShow] = useState(true);
@@ -32,7 +39,7 @@ return (
           <IconButton onClick={()=>setShow(!show)} color="primary" style={{marginTop: "-5px"}} >
             {show ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
           </IconButton>
-          <IconButton  onClick={()=> history.push("/movies/" + index)} color="primary" style={{marginTop:"-4px"}}> {/*  interpolation method --> history.push(`/movies/$(index)`)  */}
+          <IconButton  onClick={()=> history.push("/movies/" + id)} color="primary" style={{marginTop:"-4px"}}> {/*  interpolation method --> history.push(`/movies/$(index)`)  */}
             <InfoIcon/>
           </IconButton>
         </h3>
