@@ -29,9 +29,21 @@ export function AddMovie({ movie, setmovie }) {
       rating,
       trailer,
     };
-    setmovie([...movie, newMovie]);
-    resetMovieForm();
-    history.push('/movies');
+
+    //api add
+    fetch("https://62dd3993ccdf9f7ec2c27434.mockapi.io/movies",
+    {
+      method : "POST",
+      body : JSON.stringify(newMovie),
+      headers : {"Content-type" : "application/json"}
+    })
+    .then(()=>history.push('/movies')) ;
+    
+    //local add method
+
+    // setmovie([...movie, newMovie]);
+    // resetMovieForm();
+    // history.push('/movies');
   };
   return (
     <div>
