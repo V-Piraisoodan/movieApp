@@ -24,7 +24,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function App() {
 
-  const [movie,setmovie] = useState([])
+  // const [movie,setmovie] = useState([])
   const history = useHistory();
 
   const [mode,setmode] = useState("light")
@@ -36,11 +36,26 @@ function App() {
     },
   });
 
-  useEffect(()=>{
-    fetch("https://62dd3993ccdf9f7ec2c27434.mockapi.io/movies") //to get the api
-    .then(data=>data.json())                                   // to convert the date into json format
-    .then(ans=> setmovie(ans))                              //get the output in console
-  }, []);
+  // useEffect(()=>{
+  //   fetch("https://62dd3993ccdf9f7ec2c27434.mockapi.io/movies") //to get the api
+  //   .then(data=>data.json())                                   // to convert the date into json format
+  //   .then(ans=> setmovie(ans))                              //get the output in console
+  // }, []);
+
+  // another method async and await
+
+  // useEffect(()=>{
+  //   async function getMovies(){
+  //     const data = await fetch("https://62dd3993ccdf9f7ec2c27434.mockapi.io/movies",
+  //     {
+  //       method : "GET",
+  //     }
+  //     );
+  //     const ans = await data.json()
+  //     setmovie(ans)
+  //   }
+  //   getMovies();
+  // }, []);
 
   const paperStyles = {
     borderRadius : "0px",
@@ -107,22 +122,22 @@ function App() {
 
           {/* add movies */}
           <Route path='/movies/add'>
-            <AddMovie movie={movie} setmovie={setmovie}/>
+            <AddMovie />
           </Route>
 
           {/* edit movie */}
           <Route path='/movies/edit/:id'>
-            <EditMovie movie={movie} setmovie={setmovie}/>
+            <EditMovie />
           </Route>  
 
           {/* dynamic route */}
           <Route path='/movies/:id'>
-            <MoviesDetails movies={movie}/>
+            <MoviesDetails />
           </Route>  
 
           {/*movies path  */}
           <Route path='/movies'>
-            <Movielist movie={movie} setmovie={setmovie}/>
+            <Movielist />
           </Route>
 
           {/* color game path */}
