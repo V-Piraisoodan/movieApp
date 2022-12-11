@@ -1,13 +1,29 @@
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import TextField from '@mui/material/TextField';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-export function EditMovie({ movie, setmovie }) {
+// export function EditMovie({ movie, setmovie }) {      ithu probs moolamaga movie detail perum method {movie,setmovie}
+export function EditMovie() {
 
   const {id} = useParams();
-  const movies = movie[id];
+  // const movies = movie[id];  ithu probs method
+
+  // use effect or API method
+  const [movies , setMovies] = useState(null);
+  useEffect(()=>{
+    fetch(`https://62dd3993ccdf9f7ec2c27434.mockapi.io/movies/${id}`,
+    {
+      method: "GET",
+    })                                                          //to get the api
+    .then(data=>data.json())                                   // to convert the date into json format
+    .then(ans=> setMovies(ans))                                //get the output in console
+  }, []);
+  return movies ? <UpdatedMovie movies={movies} /> : ""
+}
+
+function UpdatedMovie({movies}){
 
   const [moviename, setMoviename] = useState(movies.moviename);
   const [pic, setPic] = useState(movies.pic);
@@ -34,12 +50,29 @@ export function EditMovie({ movie, setmovie }) {
       rating,
       trailer,
     };
+
+    //ithu ellam probs method {{{{{[[[[
+
     // we need copy of movies and update the movie
-    const copyofMovies = [...movie];  //get copy of movie 
-    copyofMovies[id] = UpdatedMovie;  //get which movie selected and update the data
-    setmovie(copyofMovies);  // update the original data
+    // const copyofMovies = [...movie];  // get copy of movie 
+    // copyofMovies[id] = UpdatedMovie;  // get which movie selected and update the data
+    // setmovie(copyofMovies);  // update the original data
     // resetMovieForm();
-    history.push('/movies');
+    
+    // ]]]]}}}}
+
+    //fetch or use effect method
+
+    fetch(`https://62dd3993ccdf9f7ec2c27434.mockapi.io/movies/${movies.id}`,
+    {
+      method : "PUT",
+      body : JSON.stringify(UpdatedMovie),
+      headers : {"Content-type" : "application/json"}
+    })
+    .then(()=>history.push('/movies')) ;
+
+
+    // history.push('/movies');   probs method
   };
   return (
     <div>

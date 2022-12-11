@@ -63,7 +63,7 @@ export function Movielist() {
             </IconButton>}
           editButton = {
             <IconButton style={{marginLeft:"auto"}}
-              onClick={()=> history.push("/movies/edit/" + index)} 
+              onClick={()=> history.push("/movies/edit/" + id)} 
               size="small" 
               color="secondary" 
               aria-label="edit">
