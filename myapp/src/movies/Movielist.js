@@ -9,6 +9,7 @@ import { useEffect , useState } from 'react';
 export function Movielist() {
   const history = useHistory();
   const [movie,setmovie] = useState([])
+  console.log(movie)
 
   const getMovies = () => {
     fetch("https://62dd3993ccdf9f7ec2c27434.mockapi.io/movies",
@@ -16,7 +17,7 @@ export function Movielist() {
       method : "GET",
     }) //to get the api
     .then(data=>data.json())                                   // to convert the date into json format
-    .then(ans=> setmovie(ans)) 
+    .then(ans=> setmovie(ans))  
   }
 
   useEffect(getMovies, []);

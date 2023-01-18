@@ -38,6 +38,12 @@ export function AddMovie({ movie, setmovie }) {
       headers : {"Content-type" : "application/json"}
     })
     .then(()=>history.push('/movies')) ;
+
+
+
+
+
+    
     
     //local add method
 

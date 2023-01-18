@@ -54,7 +54,7 @@ body{
   margin-top: 20px;
   gap: 24px;
   flex-wrap: wrap;
-  justify-content:flex-start;
+  justify-content:center;
 }
 .counter-container{
   display: flex;
